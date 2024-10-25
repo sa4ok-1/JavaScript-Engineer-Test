@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const SuperheroDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [superhero, setSuperhero] = useState(null);
 
   useEffect(() => {
@@ -23,9 +24,10 @@ const SuperheroDetail = () => {
       <p><strong>Catch Phrase:</strong> {superhero.catch_phrase}</p>
       <div>
         {superhero.images.map((image, index) => (
-          <img key={index} src={image} alt={`${superhero.nickname} ${index}`} width="200" />
+          <img key={index} src={`/${image}`} alt={`${superhero.nickname} ${index}`} width="200" />
         ))}
       </div>
+      <button onClick={() => navigate('/')}>Show all hero </button>
     </div>
   );
 };
