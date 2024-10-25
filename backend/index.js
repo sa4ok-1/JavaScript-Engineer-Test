@@ -10,8 +10,6 @@ app.use(bodyParser.json());
 app.use('/api', superheroRoutes);
 
 mongoose.connect('mongodb+srv://sasha:09121978@cluster0.2pj8e.mongodb.net/superhero_db?retryWrites=true&w=majority', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
 });
 
 app.listen(5000, () => {

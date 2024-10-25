@@ -2,14 +2,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import "./style/Home-style.css";
+import "./style/MainPage.css";
 import { ReactComponent as ViewIcon } from "../icons/browse-svgrepo-com.svg";
 import { ReactComponent as EditIcon } from "../icons/pen-svgrepo-com.svg";
 import { ReactComponent as DeleteIcon } from "../icons/trash-svgrepo-com.svg";
-import { ReactComponent as PlusIcon } from "../icons/plus-svgrepo-com.svg";
-import MainIcon from "../icons/Marvel.jpg";
 
-const Home = () => {
+const MainPage = () => {
   const [superheroes, setSuperheroes] = useState([]);
   const [page, setPage] = useState(0);
 
@@ -17,6 +15,7 @@ const Home = () => {
     const fetchSuperheroes = async () => {
       try {
         const response = await axios.get(`/api/superheroes?page=${page}`);
+        console.log(response.data);
         setSuperheroes(response.data);
       } catch (error) {
         console.error("Error fetching superheroes:", error);
@@ -37,10 +36,6 @@ const Home = () => {
 
   return (
     <div>
-      {/* Uncomment this if you want to display the header image */}
-      {/* <div className="header-image">
-        <img src={MainIcon} alt="Main Icon" />
-      </div> */}
       <div className="header-content">
         <h1>MARVEL Team</h1>
         <div className="superhero-container">
@@ -77,8 +72,6 @@ const Home = () => {
               </li>
             ))}
           </ul>
-
-          {/* Кнопки пагінації під списком */}
           <div className="pagination-container">
             <button onClick={() => setPage(page - 1)} disabled={page === 0}>
               Previous
@@ -91,4 +84,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default MainPage;

@@ -1,0 +1,28 @@
+.Back-btn {
+  width: 150px;
+  height: 55px;
+  position: absolute;
+  left: 20px;
+  border-radius: 20px;
+  background-color: rgb(239, 19, 19);
+  transition: background-color 0.3s, color 0.3s;
+  animation: pulse 1.5s infinite;
+}
+
+.Back-btn:hover {
+  background-color: #c8102e;
+  color: white;
+  border-radius: 25px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
